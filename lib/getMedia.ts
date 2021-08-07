@@ -20,7 +20,10 @@ export const getMedia =
 
       const response = await fetch(url, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       })
 
       const json: OMDBResult = await response.json()
