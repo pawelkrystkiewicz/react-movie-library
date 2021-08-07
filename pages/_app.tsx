@@ -1,4 +1,3 @@
-import 'antd/dist/antd.css'
 import { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import '../styles/details.css'
