@@ -6,9 +6,7 @@ import { useState } from 'react'
 import { SearchInput } from '../components/Search'
 
 export default function Home(): JSX.Element {
-  const [searchPhrase, setSearchPhrase] = useState<string>(
-    ''
-  )
+  const [searchPhrase, setSearchPhrase] = useState<string>('')
 
   return (
     <div className={styles.container}>
