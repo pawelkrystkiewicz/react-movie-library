@@ -1,7 +1,7 @@
 import { QueryFunctionContext } from 'react-query'
-import { OMDBAPISuccess, OMDBResult } from '../models/omdb'
-import config from '../utils/config'
 import { Config } from '../models/common'
+import { OMDBAPIError, OMDBAPISuccessDetails } from '../models/omdb'
+import config from '../utils/config'
 
 export const createMediaDetailsQueryURL = (
   { proxyUrl, omdbApi }: Config,
@@ -11,7 +11,7 @@ export const createMediaDetailsQueryURL = (
 
 export const getDetails =
   (id: string) =>
-  async ({}: QueryFunctionContext): Promise<OMDBAPISuccess> => {
+  async ({}: QueryFunctionContext): Promise<OMDBAPISuccessDetails> => {
     try {
       const url = createMediaDetailsQueryURL(config, id)
 
@@ -19,7 +19,7 @@ export const getDetails =
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
       })
-      const json: OMDBResult = await response.json()
+      const json: OMDBAPISuccessDetails | OMDBAPIError = await response.json()
 
       if (json.Response === 'False') {
         throw json.Error

@@ -5,6 +5,7 @@ export type Config = {
   localStorageObjectName: string
   contentEndMessage: string
   imageAlt: string
+  imageFallback: string
   proxyUrl: string
   omdbApi: {
     base: string

@@ -1,0 +1,77 @@
+import { List, Spin } from 'antd'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
+import { capitalize } from '../lib/capitalize'
+import { InfinitePage } from '../models/common'
+import config from '../utils/config'
+
+const EndMessage = () => (
+  <p className="center-text box-margin">{config.contentEndMessage}</p>
+)
+
+interface ListProps {
+  fetchMore: (
+    options?: FetchNextPageOptions | undefined
+  ) => Promise<InfiniteQueryObserverResult<InfinitePage, Error>>
+  pages?: InfinitePage[]
+  hasNextPage: boolean | undefined
+}
+
+const imageRatio = 2 / 3
+const imageHeight = 150
+
+export const ListedResults = ({
+  fetchMore,
+  pages,
+  hasNextPage,
+}: ListProps): JSX.Element => (
+  <InfiniteScroll
+    dataLength={pages?.length ?? 0}
+    next={fetchMore}
+    hasMore={!!hasNextPage}
+    loader={
+      <div className="center-text">
+        <Spin size="large" />
+      </div>
+    }
+    style={{ overflow: 'hidden' }}
+    endMessage={<EndMessage />}
+  >
+    {pages &&
+      pages.map((page: InfinitePage, idx: number) => (
+        <List
+          key={idx}
+          itemLayout="horizontal"
+          dataSource={page.result.Search}
+          renderItem={item => {
+            const imgSource =
+              item.Poster && item.Poster !== 'N/A'
+                ? item.Poster
+                : config.imageFallback
+            return (
+              <Link href={`/details?id=${item.imdbID}`} passHref>
+                <List.Item
+                  extra={
+                    <Image
+                      src={imgSource}
+                      alt={item.Title ?? config.imageAlt}
+                      height={imageHeight}
+                      width={imageHeight * imageRatio}
+                    />
+                  }
+                >
+                  <List.Item.Meta
+                    title={<a className="bold">{item.Title}</a>}
+                    description={`${capitalize(item.Type)}, ${item.Year}`}
+                  />
+                </List.Item>
+              </Link>
+            )
+          }}
+        />
+      ))}
+  </InfiniteScroll>
+)

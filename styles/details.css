@@ -1,0 +1,71 @@
+.details {
+  display: grid;
+  gap: 0px 0px;
+  grid-template-columns: 120px 40% 50px auto 120px;
+  grid-template-rows: 0.5fr 1.3fr 1fr;
+  grid-template-areas:
+    '. poster . plot .'
+    '. poster . info .'
+    '. poster . info .';
+}
+
+.details__poster {
+  max-height: 80vh;
+  aspect-ratio: 2/3;
+  grid-area: poster;
+}
+
+.details__info {
+  grid-area: info;
+}
+
+.details__plot {
+  grid-area: plot;
+  height: min-content;
+}
+
+@media (max-width: 1024px) {
+  .details {
+    display: grid;
+    gap: 0px 0px;
+    grid-template-columns: 20px 40% 30px auto 20px;
+    grid-template-rows: 0.5fr 1.3fr 1fr;
+    grid-template-areas:
+      '. poster . plot .'
+      '. poster . info .'
+      '. poster . info .';
+  }
+}
+
+@media (max-width: 850px) {
+  .details__plot {
+    margin-top: unset;
+  }
+  .details {
+    display: grid;
+    gap: 0px 0px;
+    grid-template-columns: 8px 1.5fr 20px 1.4fr 8px;
+    grid-template-rows: 1.5fr auto 30px min-content;
+    grid-template-areas:
+      '. poster . info .'
+      '. poster . info .'
+      '. . . info .'
+      '. plot . info .';
+  }
+}
+
+@media (max-width: 650px) {
+  .details__plot {
+    margin-top: 20px;
+  }
+  .details {
+    display: grid;
+    gap: 0px 0px;
+    grid-template-columns: 8px auto 8px;
+    grid-template-rows: auto min-content auto;
+    grid-template-areas:
+      '. poster .'
+      '. plot .'
+      '. info .';
+  }
+}

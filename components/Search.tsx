@@ -1,18 +1,18 @@
 import React from 'react'
+import { Input } from 'antd'
 
+const { Search } = Input
 interface SearchInputProps {
-  searchPhrase: string
   setSearchPhrase: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const SearchInput = ({
-  searchPhrase,
   setSearchPhrase,
 }: SearchInputProps): JSX.Element => (
-  <input
-    placeholder={'Media title'}
-    onChange={e => setSearchPhrase(e.target.value)}
-    value={searchPhrase}
-    type="text"
+  <Search
+    allowClear
+    placeholder="Search media..."
+    onSearch={setSearchPhrase}
+    enterButton
   />
 )
