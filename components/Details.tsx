@@ -10,8 +10,12 @@ interface DetailsProps {
 
 export const Details = ({ data }: DetailsProps): JSX.Element => (
   <div className="details">
+    <div className="details__title">
+      {data.Title} ({data.Year})
+    </div>
     <div className="details__poster">
       <Image
+        data-testid="poster"
         src={
           data.Poster && data.Poster !== 'N/A'
             ? data.Poster
@@ -29,20 +33,20 @@ export const Details = ({ data }: DetailsProps): JSX.Element => (
     </div>
     <div className="details__info">
       <h3>Info</h3>
-      <p>Director: {data.Director}</p>
-      <p>Stars: {data.Actors}</p>
-      <p>Production: {data.Production}</p>
-      <p>Country: {data.Country}</p>
-      <p>Language: {data.Language}</p>
-      <p>Runtime: {data.Runtime}</p>
+      <p data-testid="director">Director: {data.Director}</p>
+      <p data-testid="stars">Stars: {data.Actors}</p>
+      <p data-testid="production">Production: {data.Production}</p>
+      <p data-testid="country">Country: {data.Country}</p>
+      <p data-testid="language">Language: {data.Language}</p>
+      <p data-testid="runtime">Runtime: {data.Runtime}</p>
 
-      <p>
+      <p data-testid="released">
         Released: {data.Released}, on DVD: {data.DVD}
       </p>
-      <p>Genre: {data.Genre}</p>
-      <p>Age restrictions: {data.Rated}</p>
-      <p>Awards: {data.Awards}</p>
-      <p>BoxOffice: {data.BoxOffice}</p>
+      <p data-testid="genre">Genre: {data.Genre}</p>
+      <p data-testid="age-restrictions">Age restrictions: {data.Rated}</p>
+      <p data-testid="awards">Awards: {data.Awards}</p>
+      <p data-testid="box-office">BoxOffice: {data.BoxOffice}</p>
 
       <span>Ratings</span>
       <ul>
@@ -51,12 +55,14 @@ export const Details = ({ data }: DetailsProps): JSX.Element => (
             {Source}: {Value}
           </li>
         ))}
-        <li>
+        <li data-testid="imdb-rating">
           IMDBRating: {data.imdbRating} ({data.imdbVotes} votes)
         </li>
       </ul>
       <Link href={`https://www.imdb.com/title/${data.imdbID}`}>
-        <a target="_blank">View on IMDB</a>
+        <a data-testid="imdb-link" target="_blank">
+          View on IMDB
+        </a>
       </Link>
     </div>
   </div>

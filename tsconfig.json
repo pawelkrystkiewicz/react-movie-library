@@ -15,7 +15,11 @@
     "jsx": "preserve",
     "noImplicitAny": false,
     "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+    "baseUrl": ".",
+    "paths": {
+      "@test-utils": ["./test/utils/test-utils"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "server.js"],
   "exclude": ["node_modules"]
