@@ -6,7 +6,6 @@ export type Config = {
   contentEndMessage: string
   imageAlt: string
   imageFallback: string
-  proxyUrl: string
   omdbApi: {
     base: string
     search: string

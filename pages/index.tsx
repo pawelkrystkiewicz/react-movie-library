@@ -15,8 +15,7 @@ export default function Home(): JSX.Element {
     <Layout style={{ minHeight: '100vh' }}>
       <Head>
         <title>{config.appName}</title>
-        <meta name="description" content="App for viewing media in OMDB" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="App for viewing movies in OMDB" />
       </Head>
       <Header
         style={{

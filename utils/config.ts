@@ -6,11 +6,10 @@ const config: Config = {
   contentEndMessage: 'Nothing to display :/',
   imageAlt: 'This would be a movie but something went wrong :/',
   imageFallback: '/images/poster-fallback.png',
-  proxyUrl: 'https://thingproxy.freeboard.io/fetch/',
   omdbApi: {
-    base: `https://www.omdbapi.com/?apikey=18c7c06e`,
-    search: `&type=movie&page={{page}}&s={{searchPhrase}}`,
-    details: `&i={{id}}`,
+    base: `/api`,
+    search: `?apikey=18c7c06e&type=movie&page={{page}}&s={{searchPhrase}}`,
+    details: `?apikey=18c7c06e&i={{id}}`,
   },
 }
 
