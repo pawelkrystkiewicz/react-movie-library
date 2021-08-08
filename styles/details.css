@@ -1,11 +1,13 @@
 .details {
+  /* grid-template-rows: 0.2fr 0.5fr 1.3fr 1fr; */
   display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 120px 40% 40px auto 120px;
+  grid-template-rows: min-content auto 1fr;
   gap: 0px 0px;
-  grid-template-columns: 120px 40% 50px auto 120px;
-  grid-template-rows: 0.5fr 1.3fr 1fr;
   grid-template-areas:
+    '. title . plot .'
     '. poster . plot .'
-    '. poster . info .'
     '. poster . info .';
 }
 
@@ -19,42 +21,59 @@
   grid-area: info;
 }
 
+.details__title {
+  grid-area: title;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
 .details__plot {
   grid-area: plot;
   height: min-content;
 }
 
 @media (max-width: 1024px) {
+  .details__title {
+    font-size: 20px;
+  }
   .details {
     display: grid;
     gap: 0px 0px;
     grid-template-columns: 20px 40% 30px auto 20px;
-    grid-template-rows: 0.5fr 1.3fr 1fr;
+    grid-template-rows: min-content auto 1fr;
     grid-template-areas:
+      '. title . plot .'
       '. poster . plot .'
-      '. poster . info .'
       '. poster . info .';
   }
 }
 
 @media (max-width: 850px) {
+  .details__title {
+    font-size: 18px;
+  }
   .details__plot {
     margin-top: unset;
   }
   .details {
     display: grid;
+    grid-template-columns: 30px 1.5fr 30px 1.4fr 30px;
+    grid-template-rows: 1.4fr auto 527px min-content;
     gap: 0px 0px;
-    grid-template-columns: 8px 1.5fr 20px 1.4fr 8px;
-    grid-template-rows: 1.5fr auto 30px min-content;
     grid-template-areas:
+      '. title . info .'
       '. poster . info .'
       '. poster . info .'
-      '. . . info .'
       '. plot . info .';
   }
 }
 
 @media (max-width: 650px) {
+  .details__title {
+    font-size: 16px;
+  }
+
   .details__plot {
     margin-top: 20px;
   }
@@ -62,8 +81,9 @@
     display: grid;
     gap: 0px 0px;
     grid-template-columns: 8px auto 8px;
-    grid-template-rows: auto min-content auto;
+    grid-template-rows: min-content auto min-content auto;
     grid-template-areas:
+      '. title .'
       '. poster .'
       '. plot .'
       '. info .';

@@ -1,0 +1,33 @@
+import { OMDBAPISuccessDetails } from '../../models/omdb'
+
+export const fakeMovieData: OMDBAPISuccessDetails = {
+  Title: 'Star Wars',
+  Year: '1977',
+  Rated: 'PG',
+  Released: '25 May 1977',
+  Runtime: '121 min',
+  Genre: 'Action, Adventure, Fantasy',
+  Director: 'George Lucas',
+  Writer: 'George Lucas',
+  Actors: 'Mark Hamill, Harrison Ford, Carrie Fisher',
+  Plot: "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vad",
+  Language: 'English',
+  Country: 'United States, United Kingdom',
+  Awards: 'Won 7 Oscars. 63 wins & 29 nominations total',
+  Poster: '/images/poster-fallback.png',
+  Ratings: [
+    { Source: 'Internet Movie Database', Value: '8.6/10' },
+    { Source: 'Rotten Tomatoes', Value: '92%' },
+    { Source: 'Metacritic', Value: '90/100' },
+  ],
+  Metascore: '90',
+  imdbRating: '8.6',
+  imdbVotes: '1,259,440',
+  imdbID: 'tt0076759',
+  Type: 'movie',
+  DVD: '10 Oct 2016',
+  BoxOffice: '$460,998,507',
+  Production: 'Lucasfilm Ltd.',
+  Website: 'N/A',
+  Response: 'True',
+}

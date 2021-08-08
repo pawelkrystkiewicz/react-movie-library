@@ -22,6 +22,7 @@ export default function Home(): JSX.Element {
           position: 'fixed',
           width: '100%',
           height: headerHeight,
+          minHeight: 110,
           zIndex: 10,
         }}
       >
@@ -37,7 +38,7 @@ export default function Home(): JSX.Element {
           {!!searchPhrase ? (
             <DataProvider searchPhrase={searchPhrase} />
           ) : (
-            <p className="center-text box-margin">
+            <p className="center center-text box-margin">
               Nothing here yet. <br />
               Start typing!
             </p>

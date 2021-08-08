@@ -3,7 +3,7 @@ import { Col, Row } from 'antd'
 import { breakpoints } from '../utils/breakpoints'
 
 interface ResponsiveRowProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   leftColumn?: React.ReactNode
 }
 

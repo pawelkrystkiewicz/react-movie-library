@@ -3,19 +3,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { FetchNextPageOptions, InfiniteQueryObserverResult } from 'react-query'
 import { capitalize } from '../lib/capitalize'
 import { InfinitePage } from '../models/common'
 import config from '../utils/config'
 
 const EndMessage = () => (
-  <p className="center-text box-margin">{config.contentEndMessage}</p>
+  <p className="center-text box-margin" data-testid="empty-data-info">
+    {config.contentEndMessage}
+  </p>
 )
 
 interface ListProps {
-  fetchMore: (
-    options?: FetchNextPageOptions | undefined
-  ) => Promise<InfiniteQueryObserverResult<InfinitePage, Error>>
+  fetchMore: () => Promise<any>
   pages?: InfinitePage[]
   hasNextPage: boolean | undefined
 }
@@ -45,6 +44,7 @@ export const ListedResults = ({
         <List
           key={idx}
           itemLayout="horizontal"
+          data-testid="list"
           dataSource={page.result.Search}
           renderItem={item => {
             const imgSource =
@@ -52,23 +52,25 @@ export const ListedResults = ({
                 ? item.Poster
                 : config.imageFallback
             return (
-              <Link href={`/details?id=${item.imdbID}`} passHref>
-                <List.Item
-                  extra={
-                    <Image
-                      src={imgSource}
-                      alt={item.Title ?? config.imageAlt}
-                      height={imageHeight}
-                      width={imageHeight * imageRatio}
-                    />
-                  }
-                >
-                  <List.Item.Meta
-                    title={<a className="bold">{item.Title}</a>}
-                    description={`${capitalize(item.Type)}, ${item.Year}`}
+              <List.Item
+                extra={
+                  <Image
+                    src={imgSource}
+                    alt={item.Title ?? config.imageAlt}
+                    height={imageHeight}
+                    width={imageHeight * imageRatio}
                   />
-                </List.Item>
-              </Link>
+                }
+              >
+                <List.Item.Meta
+                  title={
+                    <Link href={`/details?id=${item.imdbID}`} passHref>
+                      <a className="bold">{item.Title}</a>
+                    </Link>
+                  }
+                  description={`${capitalize(item.Type)}, ${item.Year}`}
+                />
+              </List.Item>
             )
           }}
         />

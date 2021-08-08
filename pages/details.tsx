@@ -35,15 +35,7 @@ export default function MediaDetails(): JSX.Element {
       ) : (
         <>
           <Header>
-            <ResponsiveRow leftColumn={<Return />}>
-              {!isLoading && data && (
-                <div className="center-text">
-                  <span className="app-title">
-                    {data.Title} ({data.Year})
-                  </span>
-                </div>
-              )}
-            </ResponsiveRow>
+            <ResponsiveRow leftColumn={<Return />} />
           </Header>
           <Content style={{ padding: '20px 40px' }}>
             {!isLoading && data ? (
