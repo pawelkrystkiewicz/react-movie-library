@@ -1,23 +1,12 @@
-import config from '../utils/config'
-import { OMDBResult } from '../models/omdb'
 import { QueryFunctionContext } from 'react-query'
-import { Config, InfinitePage } from '../models/common'
-
-export const createMediaQueryURL = (
-  { omdbApi }: Config,
-  searchPhrase: string,
-  page: number
-): string =>
-  `${omdbApi.base}${omdbApi.search}`
-    .replace('{{searchPhrase}}', searchPhrase.split(' ').join('+'))
-    .replace('{{page}}', page.toString())
+import { InfinitePage } from '../models/common'
+import { OMDBResult } from '../models/omdb'
 
 export const getMedia =
   (searchPhrase: string) =>
   async ({ pageParam = 1 }: QueryFunctionContext): Promise<InfinitePage> => {
     try {
-      const url = createMediaQueryURL(config, searchPhrase, pageParam)
-
+      const url = `api/search?type=movie&page=${pageParam}&search=${searchPhrase}`
       const response = await fetch(url, {
         method: 'GET',
         headers: {

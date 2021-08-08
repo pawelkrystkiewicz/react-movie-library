@@ -6,11 +6,6 @@ export type Config = {
   contentEndMessage: string
   imageAlt: string
   imageFallback: string
-  omdbApi: {
-    base: string
-    search: string
-    details: string
-  }
 }
 
 export type InfinitePage = {
