@@ -4,11 +4,11 @@ import { QueryFunctionContext } from 'react-query'
 import { Config, InfinitePage } from '../models/common'
 
 export const createMediaQueryURL = (
-  { proxyUrl, omdbApi }: Config,
+  { omdbApi }: Config,
   searchPhrase: string,
   page: number
 ): string =>
-  `${proxyUrl}${omdbApi.base}${omdbApi.search}`
+  `${omdbApi.base}${omdbApi.search}`
     .replace('{{searchPhrase}}', searchPhrase.split(' ').join('+'))
     .replace('{{page}}', page.toString())
 

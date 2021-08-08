@@ -4,10 +4,9 @@ import { OMDBAPIError, OMDBAPISuccessDetails } from '../models/omdb'
 import config from '../utils/config'
 
 export const createMediaDetailsQueryURL = (
-  { proxyUrl, omdbApi }: Config,
+  { omdbApi }: Config,
   id: string
-): string =>
-  `${proxyUrl}${omdbApi.base}${omdbApi.details}`.replace('{{id}}', id)
+): string => `${omdbApi.base}${omdbApi.details}`.replace('{{id}}', id)
 
 export const getDetails =
   (id: string) =>
